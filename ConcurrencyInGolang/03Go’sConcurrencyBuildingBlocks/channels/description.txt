@@ -1,0 +1,53 @@
+Channel
+
+- Unbuffered Channel
+    ส่งข้อมูลต้องมีตัวรับทันที ไม่เช่นนั้นจะเกิดการ block (หยุดรอจนกว่ามีผู้รับ)
+    ex 
+        ch := make(chan int) // unbuffered channel
+        go func() {
+            ch <- 10 // จะ block จนกว่ามีผู้รับ
+        }()
+        fmt.Println(<-ch) // รับค่าและพิมพ์ 10
+
+
+- Buffered Channel
+    สามารถกำหนด Buffered size ได้ เมื่อ Buffered เต็มจะเกิดการ block จนกว่าจะมีผู้รับข้อมูล
+
+- Closed
+    ปิด Channel ด้วย close เพื่อบอกว่าไม่มีการส่งข้อมูลเพิ่ม 
+    ** ห้ามส่งข้อมูลเข้า channel ที่ปิดแล้วมิฉะนั้นจะเกิด panic
+
+- Range
+    ใช้ range เพื่อวนลูปรับค่าจาก channel จน channel ถูกปิด
+
+- Select 
+    ใช้เลือก channel ที่พร้อมใช้งานใน goroutines
+    - time.After  สร้าง channel ที่จะส่งค่าเมื่อเวลาที่กำหนดผ่านไป
+        ex 
+            ch := make(chan string)
+
+	        // ส่งค่าผ่าน channel หลังจาก 2 วินาที
+	        go func() {
+		        time.Sleep(2 * time.Second)
+		        ch <- "data from channel"
+	        }()
+
+            select {
+            case msg := <-ch:
+                fmt.Println("Received:", msg)
+            case <-time.After(3 * time.Second): // รอไม่เกิน 3 วินาที
+                fmt.Println("Timeout! No response from channel.")
+            }
+    
+    - time.Sleep ใช้สำหรับหยุด goroutine ชั่วคราว ไม่ส่งผลต่อ select โดยตรง
+        ex  time.Sleep(2 * time.Second) // หยุดการทำงานของ Goroutine 2 วินาที
+   
+    สรุป 
+        - ใช้ time.After ใน select เพื่อจัดการ Timeout หรือหน่วงเวลา
+        - ใช้ time.Sleep ภายใน Goroutine เพื่อหน่วงการทำงานแบบง่ายๆ
+
+
+สรุปการใช้งาน Channel
+    - ใช้ Channels เพื่อซิงโครไนซ์และส่งข้อมูลระหว่าง Goroutines
+    - ใช้ select เพื่อจัดการหลาย Channel พร้อมกัน
+    - ปิด Channel ด้วย close เมื่อไม่มีการส่งข้อมูลเพิ่มเติม
