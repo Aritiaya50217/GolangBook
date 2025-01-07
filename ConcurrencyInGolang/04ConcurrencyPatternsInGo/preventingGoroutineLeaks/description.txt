@@ -1,0 +1,36 @@
+Preventing Goroutine Leaks 
+    การป้องกันไม่ให้ Goroutines ในภาษา Go ทำงานต่อเนื่องโดยไม่จำเป็น หรือถูกบล็อกจนไม่สามารถจบการทำงานได้เอง (Resource ที่ไม่ถูกปล่อย) ซึ่งอาจทำให้เกิดปัญหาด้านประสิทธิภาพ เช่น ใช้หน่วยความจำ (Memory) มากเกินไป หรือทำให้โปรแกรมหยุดทำงาน
+
+    สาเหตุหลักของ Goroutine Leaks
+        1. Blocked Channels
+            - Goroutine รอการส่งหรือรับข้อมูลใน Channel แต่ไม่มีผู้ส่งหรือผู้รับ
+       
+        2. Infinite Loops Without Exit Conditions
+            - Goroutine ทำงานในลูปที่ไม่มีทางจบ
+
+        3. Unreachable Goroutines     
+            - Goroutines ที่ไม่ถูกจัดการหรือหยุดทำงานเมื่อไม่มีความจำเป็น
+
+    วิธีป้องกัน Goroutine Leaks
+        1. ใช้ Context เพื่อตรวจสอบการยกเลิก
+            - context.Context ช่วยควบคุมอายุของ Goroutine และยุติการทำงานเมื่อหมดเวลา (Timeout) หรือถูกยกเลิก
+        
+        2. ตรวจสอบ Channels เพื่อป้องกัน Block
+            - ใช้ Buffered Channels หากผู้ส่งหรือผู้รับอาจไม่พร้อมในเวลาเดียวกัน
+            - ปิด Channel เมื่อไม่มีการใช้งาน
+
+        3. กำหนด Exit Condition ในลูป    
+
+        4. ระมัดระวังการใช้ Select
+            - ในกรณีที่ใช้ select ควรตรวจสอบกรณี default case หรือช่องทางที่ทำให้ Goroutine หยุดได้
+
+        5. วิเคราะห์และตรวจสอบ Goroutine ด้วย Debugging Tools
+            - ใช้เครื่องมืออย่าง runtime.NumGoroutine() เพื่อตรวจสอบจำนวน Goroutines ในระบบ
+
+** สรุป
+    การป้องกัน Goroutine Leaks เป็นเรื่องสำคัญในการเขียนโปรแกรม Concurrent ใน Go โดยคุณควร:
+    - ใช้ Context เพื่อตรวจสอบและยกเลิก Goroutine เมื่อไม่ต้องการ
+    - จัดการ Channel ให้ถูกต้อง
+    - ระวังการเขียนลูปที่ไม่มีทางออก
+    - ตรวจสอบโค้ดด้วยเครื่องมือ Debugging
+   
