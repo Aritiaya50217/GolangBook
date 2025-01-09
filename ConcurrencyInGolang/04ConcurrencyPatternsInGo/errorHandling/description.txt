@@ -1,0 +1,29 @@
+Error Handling
+    Error Handling ใน Concurrency ของ Golang เป็นกระบวนการจัดการข้อผิดพลาดในโปรแกรมที่ทำงานแบบขนาน (concurrent) โดยใช้ Goroutines และ Channels เพื่อช่วยในการสื่อสารและจัดการสถานการณ์ที่มีข้อผิดพลาดเกิดขึ้นในกระบวนการทำงานหลายส่วนพร้อมกัน
+
+    หลักการจัดการข้อผิดพลาดใน Concurrency
+        1. การใช้ Channel เพื่อส่ง Error
+            - Channels เป็นวิธีที่ปลอดภัยสำหรับการสื่อสารระหว่าง Goroutines
+        
+        2. การรวม Error จากหลาย Goroutines  
+            - ใช้ sync.WaitGroup เพื่อรอการทำงานของ Goroutines ทั้งหมดให้เสร็จสิ้น 
+            - ใช้ Mutex เพื่อป้องกันการแก้ไขข้อมูลที่ใช้ร่วมกัน เช่น การเก็บรวบรวม Error
+
+        3. การใช้ Context เพื่อจัดการ Timeout หรือ Cancelation
+            -  context เป็นเครื่องมือที่ช่วยควบคุมการทำงานของ Goroutines โดยสามารถกำหนด Timeout หรือ Cancel การทำงานเมื่อเกิดข้อผิดพลาด  
+
+    Best Practices สำหรับ Error Handling ใน Concurrency
+        1. แยก Error Handling ออกจาก Logic หลัก
+            - ใช้ Channel หรือ Goroutines ที่แยกเฉพาะสำหรับการจัดการ Error
+
+        2. ใช้ Context เพื่อจัดการเวลาและการยกเลิกงาน    
+            - ช่วยลดปัญหา Goroutines รันเกินความจำเป็น
+
+        3. จัดการ Goroutines ด้วย WaitGroup
+            - ใช้ sync.WaitGroup เพื่อรอให้ Goroutines เสร็จสิ้นก่อนที่จะดำเนินการขั้นตอนต่อไป
+
+        4. ตรวจสอบ Deadlock   
+            - หลีกเลี่ยงการ Block Channels หรือ Mutex โดยไม่ได้ตั้งใจ
+
+        5. รวบรวม Error อย่างปลอดภัย
+            - ใช้ Mutex หรือ Channel เพื่อป้องกันการเขียนข้อมูลซ้อนทับใน Error Collection
