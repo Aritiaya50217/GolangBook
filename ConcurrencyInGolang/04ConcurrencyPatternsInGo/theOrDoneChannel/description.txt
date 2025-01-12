@@ -1,0 +1,42 @@
+Or-Done Channel
+    แนวคิดของ Or-Done Channel
+        1. Or-Done Channel คือวิธีการรวมการทำงานของ Channel หลายตัว และตรวจสอบว่า Channel "done" ได้ส่งสัญญาณให้หยุดการทำงานหรือไม่
+
+        2. Channel "done" มักถูกใช้ในการควบคุมการยกเลิก (cancellation) หรือการปิด Goroutine เพื่อป้องกันปัญหา Goroutine leaks (Goroutines ที่ยังทำงานอยู่โดยไม่จำเป็น)
+
+    โครงสร้างพื้นฐานของ Or-Done Channel
+        1. รับ Channel หลัก (input) และ Channel "done" (done) เป็นพารามิเตอร์
+       
+        2. ใช้ select statement เพื่อตรวจสอบสัญญาณจาก Channel "done" และ Channel อื่น ๆ
+       
+        3. เมื่อ Channel "done" ถูกปิดหรือส่งข้อมูลมา Goroutine จะหยุดทำงานทันที
+
+    การทำงาน    
+        1. Channel "done": ทำหน้าที่ส่งสัญญาณเพื่อบอก Goroutine ให้หยุดทำงาน
+
+        2. select statement: ใช้เลือกว่าควรอ่านค่าจาก Channel "done" หรือ input
+            - หาก "done" ถูกปิด (close(done)): Goroutine จะหยุดทำงานทันที
+            - หาก input ส่งค่ามา: ค่านั้นจะถูกส่งต่อไปยัง out
+
+        3. เมื่อ Goroutine หยุดทำงาน จะไม่มีการส่งค่าหรือใช้งาน Channel อื่นอีกต่อไป  
+
+    ข้อดีของ Or-Done Channel
+        1. ป้องกัน Goroutine Leaks: Goroutines ที่ยังทำงานอยู่โดยไม่จำเป็นจะหยุดทำงานทันที
+      
+        2. การจัดการ Timeout หรือ Cancellation ง่ายขึ้น: ใช้ Channel "done" เพื่อควบคุมการหยุด
+      
+        3. ประสิทธิภาพ: ลดการใช้ทรัพยากรโดยหยุดงานที่ไม่จำเป็น
+    
+    กรณีใช้งานจริง
+        1. Streaming Data: ประมวลผลข้อมูลแบบสตรีมและต้องการหยุดการประมวลผลเมื่อได้รับสัญญาณ
+
+        2. Timeout: หยุดงานที่ใช้เวลานานเกินไป
+
+        3. Graceful Shutdown: ใช้ปิด Goroutines เมื่อโปรแกรมกำลังจะหยุดทำงาน
+
+    สรุป
+        1.  Or-Done Channel เป็นวิธีที่มีประสิทธิภาพในการจัดการ Goroutines และ Channels
+
+        2. ใช้เพื่อหยุดงานหรือยกเลิกการประมวลผลเมื่อได้รับสัญญาณ "done"
+      
+        3. เหมาะสำหรับการทำงานแบบ Concurrent ที่ต้องการการควบคุมการหยุดหรือ Timeout    
