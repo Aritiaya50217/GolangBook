@@ -1,0 +1,24 @@
+The context Package 
+        เป็นแพ็กเกจที่ใช้สำหรับจัดการข้อมูลที่เกี่ยวข้องกับการดำเนินงาน (operation) หรือการประมวลผลใน Goroutines 
+    และช่วยควบคุมการทำงาน เช่น การกำหนดระยะเวลาการทำงาน (timeouts), การยกเลิกงาน (cancellation), 
+    และการส่งข้อมูล metadata ระหว่าง Goroutines
+
+    จุดประสงค์ของ context
+        1. การยกเลิกงานที่เกี่ยวข้อง: ใช้สำหรับยกเลิกงานทั้งหมดที่อยู่ใน Goroutines ต่าง ๆ เมื่อไม่มีความจำเป็นอีกต่อไป
+        2. การกำหนดเวลา Timeout/Deadline: จำกัดเวลาที่งานสามารถทำงานได้
+        3. การส่งค่าผ่าน Metadata: ส่งข้อมูลเพิ่มเติม เช่น user ID, token, หรือ configuration ระหว่าง Goroutines
+        4. ปรับปรุงการจัดการ Goroutines: ช่วยลด Goroutines ที่ไม่ถูกปิด (leak) และเพิ่มความสามารถในการควบคุมการทำงาน
+
+    ฟังก์ชันสำคัญในแพ็กเกจ context
+        1. context.Background()
+            ใช้สร้าง Context หลักที่ไม่มีข้อมูลหรือ Deadline เหมาะสำหรับใช้ในจุดเริ่มต้นของโปรแกรม
+        2. context.TODO()
+            ใช้ในกรณีที่ยังไม่แน่ใจว่าควรใช้ Context อะไรในโค้ดนั้น (ใช้ชั่วคราว)
+        3. context.WithCancel(parent)
+            สร้าง Context ใหม่ที่สามารถยกเลิกได้ด้วยการเรียก cancel()
+        4. context.WithTimeout(parent, timeout)
+            สร้าง Context ใหม่ที่หมดเวลาอัตโนมัติเมื่อถึง Timeout ที่กำหนด
+        5. context.WithDeadline(parent, deadline)
+            สร้าง Context ใหม่ที่หมดเวลาอัตโนมัติเมื่อถึงเวลาที่กำหนด
+        6. context.WithValue(parent, key, value)
+            สร้าง Context ใหม่ที่มีค่า Metadata สำหรับส่งข้อมูลระหว่าง Goroutines
