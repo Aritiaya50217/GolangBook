@@ -1,0 +1,13 @@
+Timeouts And Cancellation 
+        Timeouts และ Cancellation เป็นส่วนสำคัญของการพัฒนาโปรแกรม โดยเฉพาะในกรณีที่ต้องรอการทำงานของฟังก์ชันที่อาจใช้เวลานาน เช่น การรอการตอบกลับจากเซิร์ฟเวอร์หรือการทำงานแบบ Concurrent ที่อาจไม่สำเร็จภายในเวลาที่กำหนด
+    ใน Go เราสามารถจัดการ Timeouts และ Cancellations ได้ด้วยการใช้ context จากแพ็คเกจ context.
+
+    การใช้ context.Context
+        แพ็คเกจ context ช่วยให้คุณสามารถ:
+            1. กำหนด Timeout: ให้โปรแกรมหยุดรอการทำงานเมื่อเวลาที่กำหนดหมดลง
+            2. ยกเลิกการทำงาน: ใช้ Signal เพื่อหยุดการทำงานที่ไม่จำเป็น
+
+        ฟังก์ชันสำคัญใน context:
+            1. context.WithTimeout: สร้าง Context พร้อม Timeout
+            2. context.WithCancel: สร้าง Context ที่สามารถยกเลิกได้ด้วยการเรียก cancel
+            3. context.WithDeadline: กำหนดเวลาสิ้นสุด (Deadline) ให้กับ Context
