@@ -1,0 +1,5 @@
+The producer-consumer problem
+    ปัญหาการประสานงานระหว่างสองประเภทของ goroutine คือ  Producer และ Consumer ที่ใช้ shared resource (เช่น buffer หรือ queue) ในการส่งข้อมูล โดยที่
+        - Producer จะสร้างข้อมูลและนำข้อมูลนั้นไปใส่ใน buffer
+        - Consumer จะดึงข้อมูลจาก buffer มาใช้ และทำการประมวลผล
+        
