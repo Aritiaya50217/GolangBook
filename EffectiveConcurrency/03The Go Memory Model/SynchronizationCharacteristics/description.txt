@@ -1,0 +1,4 @@
+Synchronization characteristics of Go concurrency 
+    คุณสมบัติหรือการทำงานที่เกี่ยวข้องกับการจัดการและการควบคุมการเข้าถึงข้อมูลหรือทรัพยากรที่ใช้ร่วมกัน (shared resources) โดยหลายๆ goroutine หรือ thread โดยไม่ให้เกิดปัญหาเรื่องการเข้าถึงพร้อมกัน (race condition) หรือการทำงานไม่ถูกต้องเมื่อมีหลาย goroutine มาทำงานพร้อมกัน
+
+    
