@@ -98,3 +98,5 @@ func NewAdapter(dataSourceUrl string) (*Adapter, error) {
 	}
 	return &Adapter{db: db}, nil
 }
+
+83
