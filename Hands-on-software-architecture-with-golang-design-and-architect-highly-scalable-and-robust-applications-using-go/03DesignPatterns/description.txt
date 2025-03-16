@@ -1,0 +1,23 @@
+Design patterns
+    Design patterns ในภาษา Go (หรือ Golang) คือ เทคนิคการออกแบบซอฟต์แวร์ที่ช่วยแก้ไขปัญหาที่เกิดขึ้นบ่อยๆ ในการพัฒนาโปรแกรม โดยการใช้แนวทางที่พิสูจน์แล้วว่าเหมาะสมในสถานการณ์ต่างๆ Design patterns ช่วยให้โค้ดมีความยืดหยุ่น, ขยายตัวได้ง่าย, และสามารถบำรุงรักษาได้ง่ายขึ้น
+ใน Go การนำ Design patterns มาใช้จะค่อนข้างแตกต่างจากภาษาเช่น Java หรือ C++ ที่มีการใช้ OOP (Object-Oriented Programming) อย่างหนัก แต่ Go สามารถนำ pattern หลายๆ แบบมาใช้ได้ด้วยวิธีการที่เหมาะสมกับ paradigm ของ Go (เช่น composition แทน inheritance และ interfaces แทน class-based polymorphism)
+
+    ประเภทของ Design Patterns ที่ใช้บ่อยใน Go
+        1. Creational Patterns: ใช้สำหรับการจัดการการสร้างอ็อบเจ็กต์
+            - Singleton Pattern: ใช้เพื่อให้แน่ใจว่าในโปรแกรมมี instance ของ object นั้นแค่ 1 ตัวเท่านั้น
+            - Factory Pattern: ใช้ในการสร้าง object โดยไม่ระบุชนิดของ object ที่จะสร้างในขณะ compile time
+            - Builder Pattern: ใช้สำหรับการสร้างอ็อบเจ็กต์ที่ซับซ้อนทีละขั้นตอน
+            - Prototype Pattern: ใช้สำหรับการสร้าง object ใหม่โดยการคัดลอก object เดิม
+
+        2. Structural Patterns: ใช้สำหรับการจัดการโครงสร้างของคลาสและอ็อบเจ็กต์
+            - Adapter Pattern: ใช้สำหรับแปลงอินเตอร์เฟซของอ็อบเจ็กต์ให้เข้ากับอินเตอร์เฟซที่คาดหวัง
+            - Composite Pattern: ใช้ในการจัดการกับอ็อบเจ็กต์ที่เป็นโครงสร้างต้นไม้
+            - Facade Pattern: ใช้สร้าง interface ที่ง่ายต่อการใช้งานจากหลายๆ อ็อบเจ็กต์
+            - Decorator Pattern: ใช้ในการขยายฟังก์ชันของ object โดยไม่เปลี่ยนแปลงโครงสร้างเดิม
+            - Proxy Pattern: ใช้สร้างตัวแทนที่จัดการกับการเข้าถึงอ็อบเจ็กต์จริง
+
+        3. Behavioral Patterns: ใช้สำหรับการจัดการพฤติกรรมของ object และการสื่อสารระหว่าง object ต่างๆ
+            - Observer Pattern: ใช้ในการสร้างระบบที่สามารถแจ้งเตือน (notify) เมื่อมีการเปลี่ยนแปลงใน object
+            - Strategy Pattern: ใช้สำหรับการเลือก algorithm หรือพฤติกรรมที่ต่างกันในเวลา runtime
+            - Command Pattern: ใช้ในการแยกคำสั่งจากผู้ใช้ให้ไปทำงานในภายหลัง
+            - Chain of Responsibility Pattern: ใช้ในการส่งคำขอจากอ็อบเจ็กต์หนึ่งไปยังอ็อบเจ็กต์ถัดไปในลำดับ
