@@ -1,0 +1,8 @@
+The dining philosophers problem 
+
+        ปัญหาฟิลเดอเฟอร์ (Dining Philosophers Problem) เป็นปัญหาที่ใช้ทดสอบและศึกษาเรื่องการจัดการการเข้าถึงทรัพยากรที่แชร์กัน 
+    โดยจะใช้แนวคิดเรื่อง concurrency และ synchronization ในการแก้ไขปัญหาการชนกัน (race condition) และ deadlock ในระบบคอมพิวเตอร์
+
+
+
+
