@@ -14,3 +14,4 @@ func Home(writer http.ResponseWriter, reader *http.Request) {
 	log.Println(customers)
 	template_html.ExecuteTemplate(writer, "Home", "customers")
 }
+// test
