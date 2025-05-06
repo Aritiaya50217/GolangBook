@@ -1,0 +1,10 @@
+Adelson, Velski, and Landis (AVL) tree
+    โครงสร้างข้อมูลแบบ Binary Search Tree (BST) ที่มีคุณสมบัติพิเศษคือ Self-Balancing หรือการรักษาสมดุลโดยอัตโนมัติหลังจากมีการ แทรก (insert) หรือ ลบ (delete) ข้อมูล
+    จุดเด่นของ AVL Tree:
+        1. เป็น BST ที่มีการควบคุม "Balance Factor" ไว้ไม่เกิน -1, 0, หรือ +1
+        2. เมื่อไม่สมดุลจะมีการหมุนต้นไม้ (Tree Rotation) เพื่อให้กลับมาสมดุลอีกครั้ง
+        3. ทำให้เวลา ค้นหา (search), แทรก, ลบ ทำได้ในเวลา O(log n) เสมอ (ดีที่สุดสำหรับ tree-based search)
+
+    สรุป:
+        1. AVL Tree คือ Binary Search Tree ที่มีการรักษาสมดุลอัตโนมัติ
+        2. เหมาะสำหรับระบบที่ต้องการประสิทธิภาพสูงในการค้นหาข้อมูล (เช่น Database, Search Index)
