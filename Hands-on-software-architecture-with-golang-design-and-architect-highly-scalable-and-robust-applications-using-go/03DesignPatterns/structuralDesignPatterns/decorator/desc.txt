@@ -1,0 +1,13 @@
+Decorator
+        เพิ่มความสามารถ (functionality) ให้กับ object เดิม โดยไม่แก้ไขโค้ดเดิม
+    ผ่านการ "ห่อ" object นั้นด้วย object อื่นที่มี interface เดียวกัน
+
+    ข้อดีของ Decorator Pattern
+        1. เพิ่มความสามารถโดยไม่แก้ code เดิม ใช้หลัก Open/Closed Principle
+        2. ยืดหยุ่นสูง เลือก “ห่อซ้อนกัน” ได้หลายชั้น
+        3. ใช้งานได้ดีกับ middleware, UI, loggers ฯลฯ  เช่น ใน Go HTTP middleware ก็ใช้แนวนี้
+
+    ตัวอย่างที่ใช้ Decorator   
+        1. HTTP Middleware: เช่น LoggingMiddleware, AuthMiddleware ที่ห่อ http.Handler
+        2. File Reader/Writer: เช่น gzip.NewWriter(io.Writer)
+        3.Logger: เพิ่ม prefix/format ด้วยการ wrap log object
