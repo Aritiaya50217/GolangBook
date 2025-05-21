@@ -1,0 +1,17 @@
+Chain of Responsibility
+
+        Chain of Responsibility (CoR) คือ รูปแบบการออกแบบซอฟต์แวร์ (Design Pattern) แบบหนึ่งในกลุ่ม Behavioral Pattern 
+    ซึ่งช่วยให้คุณสามารถส่งคำขอ (request) ไปตาม "ห่วงโซ่" ของวัตถุ (objects) ได้ โดยแต่ละวัตถุจะมีโอกาสจัดการคำขอนั้น หรือส่งต่อไปยังวัตถุถัดไปในสายโซ่
+
+    แนวคิดของ Chain of Responsibility : จัดการคำขอเอง หรือ ส่งต่อให้ handler ถัดไป
+
+    โครงสร้างข้อมูลของ Chain of Responsibility 
+        1. Handler Interface : กำหนดว่า handler แต่ละตัวต้องมีเมธอดสำหรับจัดการคำขอ และตั้งค่า handler ถัดไป
+        2. BaseHandler Struct , Struct (โครงสร้างพื้นฐาน) : ใช้เก็บ reference ไปยัง handler ถัดไปใน chain
+        3. ConcreteHandler Struct (ผู้จัดการจริง) : จัดการคำขอหรือตัดสินใจส่งต่อ
+
+    
+    ข้อดีของ Chain of Responsibility 
+        1. ลดการ coupling(การเชื่อมโยง) ระหว่าง sender กับ receiver 
+        2. เพิ่ม/เปลี่ยนลำดับ handler ได้ง่าย
+        3. ทำให้โค้ดแยกเป็นโมดูลและเข้าใจง่ายขึ้น
