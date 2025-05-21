@@ -1,0 +1,18 @@
+Command Pattern
+        เป็นหนึ่งใน Behavioral Design Patterns ที่ใช้เพื่อ ห่อหุ้มคำสั่งหรือการกระทำไว้เป็นอ็อบเจ็กต์ ทำให้สามารถ
+    แยกคำสั่งออกจากผู้เรียกใช้งาน (Invoker) , ทำ undo/redo ได้ , สร้าง queue ของคำสั่ง , สร้าง macro (ชุดของคำสั่ง)
+
+    แนวคิดของ Command Pattern : "แทนคำสั่ง (หรือ method call) เป็น object"
+
+    องค์ประกอบหลัก :
+        1. Command (interface) : นิยาม method เช่น Execute()
+        2. ConcreteCommand : นำคำสั่งจริงมาห่อหุ้ม
+        3. Receiver : อ็อบเจ็กต์ที่รู้วิธีทำงานจริง
+        4. Invoker	: เรียกใช้ Command โดยไม่รู้รายละเอียดของคำสั่ง
+        5. Client	: สร้าง command และผูกไว้กับ invoker
+
+    ประโยชน์ของ Command Pattern
+        1. ยืดหยุ่น	: เพิ่ม/เปลี่ยนพฤติกรรมได้โดยไม่แตะ Invoker    
+        2. Undo/Redo : เก็บประวัติคำสั่งไว้ย้อนกลับได้
+        3. Queue : รองรับการทำงานแบบจัดคิว เช่น background jobs
+        4. Plug-in	: เพิ่มคำสั่งใหม่โดยไม่แก้โค้ดเดิม
