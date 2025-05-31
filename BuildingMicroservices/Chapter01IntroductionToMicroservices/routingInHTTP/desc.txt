@@ -1,0 +1,30 @@
+Convenience Handlers 
+    ชุดฟังก์ชันหรือ middleware ที่ช่วยให้การเขียนโค้ด HTTP handler ง่ายขึ้น และลดโค้ดซ้ำซ้อน ตัวอย่างเช่น
+        - Middleware (เช่น logging, auth)
+        - ฟังก์ชันช่วย render JSON/HTML
+        - Error handler ที่ใช้งานซ้ำได้
+
+
+Context
+    Context ใน Golang คือระบบที่ใช้สำหรับ ควบคุมเวลา (timeout/deadline) , ยกเลิกการทำงาน (cancelation) , ส่งค่าระหว่างฟังก์ชัน (value passing)
+โดยเฉพาะในงานที่เกี่ยวข้องกับ concurrent operations หรือ request-based processing เช่น HTTP request, API call, หรือ database transaction
+
+    ทำไมต้องใช้ Context 
+        1. ป้องกัน resource รั่ว (เช่น goroutines ที่ค้าง)
+        2. จัดการคำสั่งที่ใช้เวลานาน
+        3. ยกเลิกงานที่ไม่จำเป็น (เช่น client ปิด request ไปแล้ว)
+        4. ควบคุมงานแบบ async หรือ concurrent ได้ดียิ่งขึ้น
+
+สรุป Key functions of context 
+
+    - context.Background()  คือ context เปล่าใช้เป็น root   
+    - context.TODO() สำหรับสถานที่ที่ยังไม่รู้จะใช้ context ยังไง 
+    - context.WithCancel(ctx)     สร้าง context ที่ cancel ได้ 
+    - context.WithDealine(ctx , time ) หมดอายุในเวลาที่กำหนดแน่นอน
+    - context.WithValue(ctx , key , val) ใส่ข้อมูลลงใน context
+
+    สรุปง่ายๆ
+
+    Cancelation         ยกเลิก process/goroutine 
+    Timeout/Deadline    จำกัดเวลาทำงาน 
+    Value Passing       ส่งข้อมูลข้ามฟังก์ชันแบบปลอดภัย
