@@ -1,0 +1,7 @@
+context.Background()
+    คือ context เริ่มต้นที่ไม่มีข้อมูลอะไรเลย ไม่มี deadline , ไม่มี cancel 
+    ใช้ตอนที่
+        - ยังไม่ต้องการยกเลิกหรือหมดเวลา
+        - ต้องการ context สำหรับเริ่มต้น เช่น ใน main(), test, หรือในฟังก์ชัน setup ต่าง ๆ
+        - เป็น root context ในระบบขนาดใหญ่ เช่น web server หรือ gRPC server
+        
