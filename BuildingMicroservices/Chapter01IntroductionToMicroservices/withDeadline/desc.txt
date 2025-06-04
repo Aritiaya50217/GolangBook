@@ -1,0 +1,6 @@
+context.WithDeadline(parent, time.Time)
+    ใช้สร้าง context ที่จะ หมดอายุโดยอัตโนมัติเมื่อถึงเวลาที่กำหนดไว้ ไม่ว่าจะมีการทำงานเสร็จหรือไม่
+
+    แตกต่างจาก WithTimeout อย่างไร?
+        - WithDeadline(ctx, time.Time): ให้คุณกำหนดเวลาที่ แน่นอน
+        - WithTimeout(ctx, duration): ให้คุณกำหนดเวลาแบบ ระยะเวลา
