@@ -1,0 +1,18 @@
+context.WithValue()
+
+        เป็นฟังก์ชันจากแพ็กเกจ context ที่ใช้สำหรับเก็บข้อมูลแบบ key-value ลงไปใน context.Context ซึ่งมีประโยชน์มากเมื่อเราต้องการส่งข้อมูลเฉพาะตัว เช่น user ID, token
+    หรือค่าบางอย่างที่เกี่ยวข้องกับ request ไปยังฟังก์ชันต่าง ๆ โดยไม่ต้องใช้ global variable
+
+
+    รูปแบบการใช้งาน WithValue
+        func context.WithValue(parent context.Context, key, val any) context.Context
+    
+    parent: context ตัวเดิมที่เราจะต่อยอด
+    key: คีย์สำหรับเก็บข้อมูล (ควรเป็นชนิด custom เพื่อหลีกเลี่ยงการชนกันของคีย์)
+    val: ค่าที่ต้องการเก็บไว้ใน context
+
+
+    คำแนะนำที่สำคัญ
+        - หลีกเลี่ยงการใช้ string เป็น key โดยตรง เช่น "userID" เพราะอาจเกิด key collision ได้
+        - WithValue เหมาะสำหรับข้อมูลที่เป็น request-scoped เท่านั้น เช่น ข้อมูลผู้ใช้, trace ID, ฯลฯ
+        - ไม่ควรใช้ context เป็น data store ทั่วไป
