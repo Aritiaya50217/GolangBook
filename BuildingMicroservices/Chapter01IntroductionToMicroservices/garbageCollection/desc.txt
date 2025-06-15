@@ -1,0 +1,17 @@
+Garbage Collection (GC)
+
+    คือกระบวนการในระบบจัดการหน่วยความจำ (memory management) ที่ทำหน้าที่ ลบข้อมูลหรือวัตถุ (object) ที่ไม่ถูกใช้งานอีกต่อไปโดยอัตโนมัติ เพื่อให้สามารถนำพื้นที่หน่วยความจำนั้นกลับมาใช้ใหม่ได้
+
+    หลักการทำงานของ GC ใน Go : 
+        1.  Reachability (ความสามารถในการเข้าถึง)
+            - Go จะตรวจสอบว่า object นั้นยังถูก “อ้างถึง” อยู่หรือไม่ (ยัง reachable จาก stack หรือ global variables)
+        ถ้า ไม่มีใครอ้างถึง object นั้นอีก → GC จะเก็บกวาดมัน
+
+        2.  Stop-the-world + Concurrent GC  
+            - GC ทำงานเบื้องหลังขณะโปรแกรมกำลังทำงาน
+            - ใช้เวลาหยุดน้อยมาก (มัก <1ms)
+
+        3.  Tri-color Mark and Sweep Algorithm    
+            - Objects แบ่งเป็นสี (white, gray, black)
+            - GC จะ "เดินตาม pointer" ไป mark ว่า object ไหนใช้บ้าง
+            - สุดท้ายจะ sweep (ลบ) object สีขาวที่ไม่ได้ใช้งาน
