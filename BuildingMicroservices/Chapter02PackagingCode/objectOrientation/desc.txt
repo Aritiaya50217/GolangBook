@@ -1,0 +1,25 @@
+Object-Oriented Programming (OOP) หรือการเขียนโปรแกรมเชิงวัตถุ 
+    เป็นแนวคิดในการเขียนโปรแกรมที่ จำลองโลกความจริงด้วย "วัตถุ" (objects) โดยให้วัตถุเหล่านี้มี ข้อมูล (state) และ พฤติกรรม (behavior)
+
+    หลักการสำคัญของ OOP : 
+    1 . Encapsulation (การห่อหุ้ม)
+        ซ่อนรายละเอียดภายใน object และให้โต้ตอบผ่าน method เท่านั้น
+
+    2. Abstraction (นามธรรม)
+        ซ่อนความซับซ้อน แสดงเฉพาะสิ่งที่จำเป็น 
+
+    3. Inheritance (การสืบทอด)
+        Object ใหม่สามารถสืบทอดคุณสมบัติจาก object เดิม 
+
+    4. Polymorphism (พหุรูป)      
+        ความสามารถในการใช้ interface เดียวกันกับหลาย object ที่มีพฤติกรรมต่างกัน
+
+
+| แนวคิด OOP    | วิธีใน Go                                          |
+| ------------- | -------------------------------------------------- |
+| Class         | ใช้ `struct` แทน                                   |
+| Object        | ใช้ instance ของ `struct`                          |
+| Method        | ใช้ method receiver บน struct                      |
+| Inheritance   | ไม่มีโดยตรง → ใช้ composition แทน                  |
+| Interface     | ใช้ interface เพื่อ polymorphism                   |
+| Encapsulation | ใช้การตั้งชื่อพิมพ์ใหญ่/เล็ก (exported/unexported) |

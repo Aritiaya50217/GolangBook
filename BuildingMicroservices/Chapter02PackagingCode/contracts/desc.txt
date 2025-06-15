@@ -1,0 +1,7 @@
+Contracts 
+    หมายถึงแนวคิดเกี่ยวกับ การกำหนดข้อตกลงระหว่างโค้ดส่วนต่าง ๆ เช่นระหว่าง interface และ implementer, หรืออาจหมายถึง เงื่อนไขที่รับประกันการทำงานของฟังก์ชัน/โมดูล
+
+    1. Contracts ผ่าน Interface (Interface Contracts)
+        ใน Go การใช้ interface ถือเป็นรูปแบบหนึ่งของการสร้าง contract ว่า type ใด ๆ ก็ตามที่ต้องการ "ทำตามสัญญานี้" จะต้อง implement method ทั้งหมดใน interface นั้น
+    
+    2. Contracts แบบ Design by Contract (DbC) – ทำเองได้    
