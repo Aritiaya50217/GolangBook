@@ -1,0 +1,16 @@
+Communicating Sequential Processes (CSP)  
+    โมเดลการสื่อสารระหว่างโปรเซสแบบลำดับ เพื่ออธิบายวิธีที่โปรแกรมย่อย (processes) หลายตัวทำงานพร้อมกัน (concurrently) และ สื่อสารกันผ่าน channel แทนที่จะแชร์ memory
+
+    ใช้ผ่านโครงสร้างพื้นฐาน 2 อย่างหลัก ๆ:
+        1. Goroutines
+            - ฟังก์ชันที่รันแบบ concurrent โดยใช้คำสั่ง go
+            - เบากว่า thread ทั่วไปมาก (lightweight threads)
+
+        2. Channels
+            - ช่องทางสำหรับส่งข้อมูลระหว่าง goroutines
+            - ปลอดภัยโดยไม่ต้องใช้ mutex
+
+สรุป
+    1. CSP เป็นแนวคิดในการจัดการ concurrency โดย แยก process ออกเป็นส่วนย่อยที่ทำงานอิสระ
+    2. ใช้ channels เพื่อสื่อสาร ระหว่าง goroutines แทนการแชร์ memory
+    3. Golang ถูกออกแบบให้รองรับ CSP ได้อย่างลื่นไหล ทั้งใน syntax และ performance            
