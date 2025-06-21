@@ -1,0 +1,9 @@
+visibility
+    ควบคุมการเข้าถึง (Access Control) ของฟิลด์ (fields), เมธอด (methods), และฟังก์ชันต่าง ๆ
+
+    สรุป:
+    - Go ใช้ ตัวอักษรขึ้นต้น เพื่อกำหนดระดับการเข้าถึง 
+        ตัวใหญ่ = public (exported)
+        ตัวเล็ก = private (unexported)
+    - การควบคุม visibility ใช้ได้กับ ฟิลด์, เมธอด, ฟังก์ชัน, struct, interface, ฯลฯ
+
