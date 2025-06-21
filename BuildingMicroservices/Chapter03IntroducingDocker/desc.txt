@@ -1,0 +1,73 @@
+Docker volumes
+    คือวิธีหนึ่งในการจัดการข้อมูลถาวร (persistent data) ให้กับ container ซึ่งช่วยให้ข้อมูลไม่สูญหายเมื่อ container หยุดทำงาน หรือลบ container ออกไปแล้ว
+
+    ทำไมต้องใช้
+        1. ข้อมูล ไม่สูญหาย เมื่อลบ container
+        2. ใช้เก็บข้อมูลเช่น Database, log, file uploads
+        3. แชร์ข้อมูลระหว่าง container ได้
+        4. จัดเก็บข้อมูลแยกจาก container filesystem
+        5. มีประสิทธิภาพดีกว่าการใช้ bind mounts
+
+Union Filesystem 
+    วิธีที่ Docker จัดการ image และ container โดยใช้แนวคิดของ เลเยอร์ (layers) ที่ซ้อนทับกันแบบ Union Filesystem เพื่อให้ประหยัดพื้นที่ (ใช้ซ้ำไฟล์จาก image เดิม),เร็ว (ไม่ต้องคัดลอกทุกไฟล์),รองรับการเปลี่ยนแปลงเฉพาะบางส่วน
+
+    Docker ใช้ Union Filesystem อย่างไร เมื่อรัน Docker container จาก image
+        1. Docker จะนำ เลเยอร์ read-only (ของ image) มารวมกัน
+        2. จากนั้นเพิ่ม เลเยอร์ read-write ด้านบนสุด สำหรับ container นั้น
+        3. ระบบจะ มองเห็นเป็นไฟล์เดียวกันทั้งหมด (union view)
+        4. เมื่อมีการเปลี่ยนแปลงไฟล์ → ใช้ Copy-on-Write
+
+Mounting volumes        
+    คือกระบวนการเชื่อมโยงไดเรกทอรี (หรือไฟล์) จาก host machine ไปยัง container เพื่อแชร์ข้อมูลระหว่าง host กับ container , เก็บข้อมูลให้คงอยู่แม้ container หายไป (persistent data),แยกการจัดการข้อมูลกับแอป
+
+Docker ports
+    คือช่องทางที่ใช้ให้ container สามารถเชื่อมต่อกับโลกภายนอก เช่น host หรืออินเทอร์เน็ต โดย mapping พอร์ตของ container เข้ากับพอร์ตของเครื่อง host
+    
+    คำสั่ง
+        1. -p 8080:80   Host port 8080 → Container port 80
+        2. -p IP:8080:80  จำกัดการเข้าถึง เช่น 127.0.0.1
+        3. docker ps	ดูพอร์ตที่ mapping อยู่
+        4. docker-compose.yml	ใช้ ports: เพื่อ map พอร์ต
+
+
+Docker networking
+    คือระบบเครือข่ายที่ Docker ใช้เพื่อให้ containers สื่อสารกันได้ — ทั้งระหว่าง container ด้วยกัน และกับโลกภายนอก (host หรือ internet)
+    Docker มีระบบจัดการ network ของตัวเองที่ ยืดหยุ่น, แยกกันได้, และ กำหนดเองได้ เพื่อให้ containers ติดต่อกันแบบปลอดภัย , แชร์หรือจำกัดพอร์ต, เชื่อมโยงเป็นระบบใหญ่ เช่น microservices
+
+Bridge networking
+    คือ เครือข่ายเริ่มต้น (default network) ที่ Docker ใช้สำหรับ container ที่รันบนเครื่องเดียวกัน โดย Docker จะสร้าง virtual network bridge ขึ้นมาให้ containers ใช้สื่อสารกันผ่าน IP ภายใน
+    คุณสมบัติของ Bridge Network
+        1. ชนิด network  Private virtual network
+        2. การเชื่อมต่อ	   Container ↔ Container ได้ (ใน network เดียวกัน)
+        3. การเข้าถึง	  Container ↔ Host ได้ผ่าน port mapping
+        4. DNS ภายใน    มี DNS name resolution (เฉพาะ custom bridge)
+
+Host networking
+    เป็นโหมดเครือข่ายของ Docker ที่ทำให้ container ใช้ network stack เดียวกันกับเครื่อง host โดย ไม่สร้าง virtual network bridge หรือ NAT
+
+
+No network
+    Docker network แบบ none คือโหมดที่ container จะไม่มีการเชื่อมต่อเครือข่ายใดๆ เลย — ไม่มี IP, ไม่มี DNS, และไม่สามารถเชื่อมต่อออกภายนอกหรือรับการเชื่อมต่อจากภายนอกได้
+
+
+Overlay network
+    คือระบบเครือข่ายเสมือนของ Docker ที่ใช้เชื่อมต่อ containers ข้ามหลายเครื่อง (hosts) ผ่านการเข้ารหัสและ encapsulation 
+   โดยที่แต่ละ container คิดว่ากำลังสื่อสารกันใน LAN เดียวกัน 
+
+    ทำงานอย่างไร
+        1. Overlay network ทำงานโดย สร้างเครือข่ายเสมือน บนเครื่อง host หลายเครื่อง
+        2. ใช้เทคนิคเช่น VXLAN ในการห่อหุ้ม packet แล้วส่งผ่าน network จริง
+        3. Docker จะจัดการ routing และ security ให้โดยอัตโนมัติ
+
+Custom network drivers
+    คือความสามารถของ Docker ที่ให้คุณใช้ ไดรเวอร์เครือข่ายที่คุณสร้างเองหรือของบุคคลที่สาม แทนที่จะใช้เฉพาะ built-in drivers อย่าง bridge, host, overlay, หรือ macvlan
+  
+
+Docker Compose  
+    คือเครื่องมือที่ช่วยให้คุณสามารถ กำหนดและจัดการหลาย container พร้อมกัน ได้ง่ายๆ ผ่านไฟล์ docker-compose.yml เพียงไฟล์เดียว
+    
+    ทำอะไรได้บ้าง
+        1. รันหลาย container พร้อมกัน
+        2. เชื่อม network ระหว่าง container ให้อัตโนมัติ
+        3. กำหนด volumes, ports, environment variables ฯลฯ
+        4. ใช้ไฟล์เดียว (docker-compose.yml) แทนคำสั่งยาวๆ หลายบรรทัด
