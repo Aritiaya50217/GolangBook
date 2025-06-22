@@ -1,0 +1,9 @@
+Worker Pools 
+    รูปแบบการจัดการ concurrent งาน (เช่น requests หรือ jobs) ที่ควบคุมจำนวน worker goroutines ที่ทำงานในเวลาเดียวกัน
+เหมาะสำหรับควบคุม load ไม่ให้ goroutine รันเยอะเกินไป,ป้องกัน resource เช่น CPU, memory, DB, API ถูกใช้งานหนัก,ทำงานให้เสร็จเร็วแบบ parallel แต่ ควบคุมได้
+
+    แนวคิดหลัก
+        1. มี channel ของ jobs → ใส่งานลงไป
+        2. สร้าง N workers (goroutines) ไว้รออ่าน job
+        3. Workers อ่านงานจาก channel แล้วทำงาน
+        4. รอให้ทุกงานเสร็จ → ปิด channel หรือใช้ sync.WaitGroup
