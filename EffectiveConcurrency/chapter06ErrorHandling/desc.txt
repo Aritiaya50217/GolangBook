@@ -1,0 +1,22 @@
+Error Handling (การจัดการข้อผิดพลาด) 
+    คือกระบวนการจัดการกับสถานการณ์ที่โปรแกรมทำงานไม่ถูกต้อง เช่น ไฟล์หาไม่เจอ, อินพุตผิดพลาด, หรือการเชื่อมต่อเครือข่ายล้มเหลว
+
+
+Error Handling with Pipelines
+    การส่งข้อมูลผ่านหลายขั้นตอน (เหมือนสายพาน) ซึ่งแต่ละขั้นตอนอาจเกิดข้อผิดพลาดได้
+    
+    สรุปแนวทาง Error Handling แบบ Pipelines 
+        1. ฟังก์ชันแต่ละขั้นควร return (T, error) เพื่อให้สามารถหยุด pipeline ได้เมื่อ error เกิดขึ้น
+        2. ใช้ลำดับแบบ imperative	ควบคุม flow แบบชัดเจน อ่านง่าย
+        3. wrapper function (pipe) ช่วยลดซ้ำ	ทำให้ flow ดู "ลื่น" และ modular
+
+
+Error Handling with server
+    การออกแบบ middleware pipeline หรือ handler chain ที่สามารถจัดการ error ได้ในแต่ละขั้นของการประมวลผลคำขอ (request processing pipeline)
+   
+    แนวคิดหลัก
+        1. Request ผ่านชุดของ middleware handlers (pipeline)
+        2. แต่ละ middleware ตรวจสอบหรือเปลี่ยน request/response
+        3. หากมี error จะหยุด pipeline และส่ง error response กลับ
+        4. คล้าย pattern ที่ใช้ใน Express.js, ASP.NET, หรือ Spring
+
