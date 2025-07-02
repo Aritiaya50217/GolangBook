@@ -1,0 +1,26 @@
+Transmission Control Protocol (TCP)
+    โปรโตคอลสำหรับการส่งข้อมูลผ่านเครือข่ายแบบ เชื่อมต่อ (connection-oriented) ทำงานแบบเชื่อถือได้และส่งข้อมูลครบตามลำดับไม่สูญหาย ใช้กันแพร่หลาย เช่น HTTP, FTP, SSH 
+TCP จะมีการจับมือ (handshake) และ ยืนยันการส่งข้อมูล (ACK) เพื่อให้มั่นใจว่าข้อมูลถึงปลายทางแน่นอน
+
+
+    TCP ใช้เมื่อไหร่
+        1. เขียน custom network protocols
+        2. ทำ socket programming
+        3. เชื่อมต่อระหว่าง service หรือ microservices
+        4. สร้าง chat server, game server, IoT, ฯลฯ
+
+    เป้าหมายของการใช้ context กับ TCP
+       - อยากหยุดการทำงานของบาง connection ถ้าใช้เวลานานเกินไป
+       - ให้ผู้ใช้สามารถ cancel การร้องขอ
+       - server อยากควบคุมเวลาเชื่อมต่อ (เช่น 10 วิแล้วตัดทิ้ง)
+
+        ใช้ context กับ TCP เมื่อไหร่
+            1. จำกัดเวลาในการเชื่อมต่อ  ใช้ context.WithTimeout
+            2. ให้ผู้ใช้สามารถยกเลิกได้  ใช้ context.WithCancel
+            3. รอหลายอย่างพร้อมกัน  ใช้ select กับ ctx.Done()
+            4. มีการจัดการ resource หลายตัว  ใช้ context เพื่อ propagate cancel
+
+สรุป        
+    context + TCP	ใช้ควบคุมเวลา/การยกเลิกการเชื่อมต่อ
+    ctx.Done()	ใช้ตรวจสอบว่า context หมดอายุ/ถูก cancel
+    ทำให้ TCP server robust	ป้องกัน client ค้าง, จัดการ resource ได้ดีขึ้น
