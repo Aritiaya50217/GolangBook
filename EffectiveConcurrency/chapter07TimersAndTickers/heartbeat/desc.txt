@@ -1,0 +1,10 @@
+Heartbeats
+    คือ การส่งสัญญาณ (signal หรือ message) อย่างสม่ำเสมอจาก client ไปยัง server (หรือระหว่าง process) เพื่อบอกว่ายังทำงานอยู่
+ใช้เพื่อตรวจสอบว่า node, process หรือ connection ยังมีชีวิตอยู่ (alive) ถ้า server ไม่ได้รับ heartbeat ภายในเวลาที่กำหนดอาจถือว่า client disconnected
+
+    ใช้ heartbeat กับอะไรได้บ้าง
+        1. ตรวจสอบสถานะของ microservices
+        2. ตรวจสอบ connection ของ WebSocket, TCP หรือ UDP
+        3. ใช้ใน distributed systems เช่น Raft, Kubernetes
+        4. ใช้ใน IoT devices ที่ต้องส่งข้อมูลกลับมาอย่างสม่ำเสมอ
+        

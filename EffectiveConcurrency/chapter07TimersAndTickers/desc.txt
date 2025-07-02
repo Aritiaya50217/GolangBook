@@ -1,0 +1,10 @@
+Timers and Tickers 
+    Timers และ Tickers เป็นเครื่องมือในแพ็กเกจ time ที่ใช้สำหรับการทำงานที่เกี่ยวข้องกับ เวลา โดยเฉพาะในระบบที่ต้องการการทำงานแบบ หน่วงเวลา (delay) หรือ ทำซ้ำ (repeat at interval)
+
+    เปรียบเทียบ Timer vs Ticker
+        1. Timer ทำงานครั้งเดียว , ใช้สำหรับหน่วงเวลา, timeout,ใช้ Stop() ได้
+        2. Ticker ทำซ้ำเรื่อย ๆ,ใช้สำหรับ schedule งาน, auto polling
+
+    เหมาะกับกรณีใดบ้าง
+        1. Timer: ตั้ง timeout, delay ก่อน retry, scheduling ครั้งเดียว
+        2. Ticker: ทำงานซ้ำ เช่น ping server ทุกวินาที, อัปเดตหน้าจอทุก 500ms
