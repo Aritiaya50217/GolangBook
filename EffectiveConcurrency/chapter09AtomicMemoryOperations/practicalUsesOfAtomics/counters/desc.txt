@@ -1,0 +1,20 @@
+Counter
+    เพื่อจัดการตัวนับ (counter) เป็นวิธีที่ ปลอดภัย (thread-safe) และ มีประสิทธิภาพสูง ในโปรแกรมที่มีหลาย goroutine ทำงานพร้อมกัน โดยไม่ต้องใช้ mutex
+
+    ฟังก์ชัน Atomic ที่ใช้กับ Counter
+        1. atomic.AddInt32(&x, n)	    เพิ่มค่าของ x ทีละ n แบบ atomic
+        2. atomic.LoadInt32(&x)	        อ่านค่าปัจจุบันของ x
+        3. atomic.StoreInt32(&x, n)	    เขียนค่า n ไปที่ x แบบ atomic
+        4. atomic.SwapInt32(&x, n)	    เปลี่ยนค่า x เป็น n และคืนค่าก่อนหน้า
+
+    ทำไมต้องใช้ Atomics สำหรับ Counter
+        1. ปลอดภัย	ไม่ต้องใช้ mutex
+        2. ประสิทธิภาพสูง  เร็วกว่า lock เมื่อ contention ต่ำ
+        3. ใช้ง่าย	ใช้แค่ 1 บรรทัดเพื่อเพิ่ม/ลดค่า
+
+    สรุป
+        1. ใช้ atomic.AddInt64() หรือ AddInt32() เพื่อทำ counter ที่ thread-safe
+        2. อ่านค่าได้ด้วย Load(), เขียนค่าใหม่ได้ด้วย Store()
+        3. เร็วกว่า mutex และเหมาะกับ high-performance concurrent code
+
+    
