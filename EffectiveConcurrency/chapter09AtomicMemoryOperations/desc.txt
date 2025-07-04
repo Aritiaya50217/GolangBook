@@ -1,0 +1,14 @@
+Atomic Memory Operations
+        การดำเนินการกับตัวแปรหน่วยความจำ (memory variable) แบบ "อะตอมมิก" หมายความว่าเป็นการดำเนินการที่ไม่สามารถถูกแทรกหรือขัดจังหวะได้
+    โดย thread หรือ goroutine อื่นๆ ซึ่งมีความสำคัญในโปรแกรมที่ทำงานแบบ concurrent (หลาย goroutine พร้อมกัน) เพื่อป้องกัน race condition โดยไม่ต้องใช้ mutex
+
+
+    ประโยชน์ของ Atomic Operations
+        1. ปลอดภัยสำหรับ concurrent (thread-safe)
+        2. ทำงานได้เร็วกว่า sync.Mutex หรือ sync.RWMutex เพราะไม่ต้อง lock
+        3. ใช้สำหรับค่าที่ต้อง update บ่อยๆ เช่น counter, flag, หรือ state ต่างๆ
+
+    ใช้เมื่อ
+        1. ต้องการ performance สูง (ลด overhead ของ lock)
+        2. ใช้กับค่าที่ไม่ซับซ้อน เช่น counter, flag
+        3. ไม่เหมาะกับ logic ที่ซับซ้อนหรือการเปลี่ยนหลายค่าพร้อมกัน    
