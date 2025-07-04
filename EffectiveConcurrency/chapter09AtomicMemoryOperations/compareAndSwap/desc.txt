@@ -14,3 +14,18 @@ Compare and Swap (CAS)
     ข้อควรระวัง
         1. ใช้ยากกว่า mutex เพราะ logic จะซับซ้อนขึ้น
         2. ต้อง loop ซ้ำ ๆ ถ้า CAS ไม่สำเร็จอาจเกิด “spin” และกิน CPU  
+
+
+
+atomic.Pointer[T]    
+    ตัวแปร pointer ที่สามารถโหลด(อ่าน)และจัดเก็บ(เขียน) แบบthread-safe โดยไม่ใช้ mutex
+
+    ทำไมต้องใช้ 
+        1. ในระบบที่มีหลาย goroutine เข้าถึง pointer เดียวกัน ถ้าใช้ pointer ธรรมดา อาจเกิด race condition
+        2. แก้ปัญหานี้ด้วยการให้ การเข้าถึง pointer เป็น atomic operation
+
+    เมธอดหลักที่ใช้
+        1. Load()	อ่านค่าปัจจุบันของ pointer แบบ atomic
+        2. Store(ptr)	เขียน pointer ใหม่แบบ atomic
+        3. CompareAndSwap(old, new)	เปรียบเทียบ pointer ปัจจุบันกับ old และอัปเดตเป็น new ถ้าเท่ากัน
+        4. Swap(new)	สลับ pointer ใหม่ และคืนค่าเก่า

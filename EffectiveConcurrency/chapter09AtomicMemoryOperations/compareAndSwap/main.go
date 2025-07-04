@@ -17,9 +17,11 @@ func computeNewCopy(in SomeStruct) SomeStruct {
 }
 
 func updateSheredValue(index int) {
-	myCopy := sheredValue.Load()
-	newCopy := computeNewCopy(*myCopy)
-	if sheredValue.CompareAndSwap(myCopy, &newCopy) {
+	myCopy := sheredValue.Load()       // โหลดค่าปัจจุบันของ shared struct แบบ atomic
+	newCopy := computeNewCopy(*myCopy) // copy ใหม่ โดยเพิ่มค่า v
+	
+	// พยายามอัปเดต shared pointer
+	if sheredValue.CompareAndSwap(myCopy, &newCopy) { // ถ้า sheredValue ยังชี้ไปที่ myCopy อยู่ → เปลี่ยนให้ชี้ไปที่ newCopy แล้วคืน true
 		fmt.Printf("Set value %d\n", index)
 	} else {
 		fmt.Printf("Cannot set value %d\n", index)
@@ -27,9 +29,10 @@ func updateSheredValue(index int) {
 }
 
 func main() {
-	sheredValue.Store(&SomeStruct{})
+	sheredValue.Store(&SomeStruct{}) // กำหนดค่าเริ่มต้นของ shared struct เป็น {v: 0}
 	wg := sync.WaitGroup{}
-	for i := 0; i < 10000; i++ {
+	// สร้าง goroutine 2 ตัว (วนลูป 0 ถึง 1) ให้เรียก updateSheredValue(i)
+	for i := 0; i < 2; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
