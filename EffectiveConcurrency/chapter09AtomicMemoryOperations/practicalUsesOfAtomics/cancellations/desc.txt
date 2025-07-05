@@ -1,0 +1,3 @@
+Cancellations
+        ปกติใน Go เราจะใช้ context.Context สำหรับ cancellation แต่ในบางกรณีที่ต้องการความเร็ว 
+    เราสามารถใช้ atomic ทำ flag แบบ thread-safe เพื่อให้หลาย goroutine ตรวจสอบว่าควรหยุดหรือไม่
