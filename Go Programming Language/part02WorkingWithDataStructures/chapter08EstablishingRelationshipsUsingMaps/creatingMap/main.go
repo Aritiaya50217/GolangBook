@@ -62,5 +62,11 @@ func main() {
 		p[i] = keyValue{k, v}
 		i++
 	}
+	
 	fmt.Println("p : ", p)
+	fmt.Println(p.Len())
+	fmt.Println(p.Less(1, 0))
+	p.Swap(0, 1)
+	fmt.Println("swap : ", p)
+
 }
