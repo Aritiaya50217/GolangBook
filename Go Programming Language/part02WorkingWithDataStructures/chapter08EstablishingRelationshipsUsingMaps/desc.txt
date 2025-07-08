@@ -1,0 +1,8 @@
+Establishing Relationships Using Maps 
+    การใช้ map เพื่อสร้างความสัมพันธ์ระหว่างข้อมูลเช่น ความสัมพันธ์แบบ one-to-one , one-to-many,many-to-many
+
+    สรุป 
+        1. One-to-One	    map[string]string
+        2. One-to-Many	    map[string][]string
+        3. Many-to-Many	    เหมือน map[string][]string แต่สามารถกลับด้าน (สลับ key ↔ value เพื่อดูจากอีกฝั่งหนึ่ง) ได้
+        
