@@ -1,0 +1,13 @@
+The difference between a test and a benchmark
+    Test-Driven Development คือการ เขียน test ก่อน แล้วค่อยเขียนโค้ดจริงให้ test ผ่าน
+        ขั้นตอนหลัก
+            1. Red: เขียน test ที่ fail 
+            2. Green: เขียนโค้ดให้ผ่าน test
+            3. Refactor: ปรับปรุงโค้ดโดยไม่ทำให้ test พัง
+
+    Benchmark คือกระบวนการทดสอบ “ประสิทธิภาพ (performance)” ของฟังก์ชัน โดยวัดว่าโค้ดของคุณทำงานได้ เร็วแค่ไหน, ใช้ ทรัพยากรเท่าไหร่, และ มีค่าเฉลี่ยเวลาในการรันกี่ ns (นาโนวินาที) ต่อครั้ง    
+        ลักษณะของ Benchmark 
+            1. ต้องเริ่มต้นชื่อฟังก์ชันว่า BenchmarkXxx
+            2. ต้องรับพารามิเตอร์เป็น *testing.B
+            3. ใช้ b.N ใน loop เพื่อให้ Go วัดเวลาอย่างแม่นยำ
+            4. ใช้คำสั่ง go test -bench=. เพื่อรัน benchmark
