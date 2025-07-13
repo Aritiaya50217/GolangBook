@@ -1,0 +1,29 @@
+Visitor Pattern
+
+        ช่วยให้คุณสามารถ “เพิ่มการกระทำใหม่” ให้กับ object หลายๆ ชนิดได้ โดยไม่ต้องแก้ไขโครงสร้างของ object เหล่านั้น
+    แทนที่จะใส่ logic ลงใน object เอง เราจะส่ง Visitor เข้าไปทำงานกับ object นั้นแทน
+
+    แนวคิดของ Visitor Pattern
+        แยก "algorithm" ออกจาก "object structure" เพื่อให้สามารถเพิ่มพฤติกรรมใหม่ๆ ได้โดยไม่แก้ object class เดิม (Open/Closed Principle)
+
+    องค์ประกอบของ Visitor Pattern
+        1. Visitor interface – กำหนด method สำหรับ object type ต่างๆ
+        2. ConcreteVisitor – การ implement พฤติกรรมเฉพาะ
+        3. Element interface – มี Accept(visitor) เพื่อให้ visitor เข้ามาทำงาน
+        4. ConcreteElement – object จริงที่ visitor จะเข้าไปทำงานด้วย
+
+    จุดเด่นของ Visitor Pattern
+        ข้อดี
+            1. เพิ่มพฤติกรรมใหม่ได้โดยไม่แก้โค้ดใน object structure เดิม
+            2. แยก logic ของการกระทำออกจาก data structure
+            3. ช่วยให้โค้ดอ่านง่ายและแยก concerns ได้ดีขึ้น 
+
+        ข้อเสีย
+            1. ถ้ามี object types ใหม่ → ต้องอัปเดต visitor ทั้งหมด
+            2. ไม่เหมาะถ้าคุณต้องเปลี่ยน structure บ่อยๆ
+
+    ใช้เมื่อไหร่
+        1.  เมื่อคุณมี object หลายชนิด และอยากเพิ่มพฤติกรรมใหม่ๆ ให้กับ object พวกนั้นบ่อยๆ
+        2.  เมื่อคุณต้องการหลีกเลี่ยงการใส่ logic หลายๆ แบบลงใน object เดียว (แยก concerns)
+        3.  เหมาะมากกับระบบที่ต้องมีการ reporting, exporting, validation, หรือ traversal (เช่น compiler, AST)
+              
