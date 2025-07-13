@@ -1,0 +1,17 @@
+Observer Pattern
+        ใช้เพื่อสร้างความสัมพันธ์ระหว่าง Subject (ผู้ถูกสังเกต) และ Observers (ผู้สังเกต) 
+    เพื่อให้เมื่อใดก็ตามที่มีการเปลี่ยนแปลงใน Subject → Observer ทุกตัวจะได้รับแจ้ง (Notify) 
+    และสามารถปรับตัวให้เข้ากับการเปลี่ยนแปลงนั้นได้ทันที
+
+    แนวคิดพื้นฐานของ Observer
+        ใช้ในสถานการณ์ที่ มีหลาย object ต้องอัปเดตตัวเองเมื่อ object หนึ่งมีการเปลี่ยนแปลง
+
+    ส่วนประกอบของ Observer Pattern
+        1. Subject (Publisher): มี state และจัดการกับ observer ต่างๆ
+        2. Observer (Subscriber): ลงทะเบียนตัวเองกับ subject และจะถูกแจ้งเมื่อ state เปลี่ยน    
+        3. ConcreteObserver: ตอบสนองต่อการเปลี่ยนแปลง
+
+    ประโยชน์ของ Observer Pattern
+        1. Loose Coupling: Subject ไม่ต้องรู้รายละเอียดของ Observer
+        2. Scalability: เพิ่ม/ลด observer ได้ง่าย
+        3. Reusable: สามารถใช้ในระบบ event-driven, UI, messaging, ฯลฯ 
