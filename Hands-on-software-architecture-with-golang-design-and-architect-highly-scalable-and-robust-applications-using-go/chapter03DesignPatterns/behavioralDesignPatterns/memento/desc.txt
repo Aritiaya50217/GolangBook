@@ -1,0 +1,18 @@
+Memento Pattern
+    เก็บ snapshot ของ state ของ object โดยไม่ละเมิด principle ของ encapsulation และให้สามารถ restore state นั้นกลับมาได้ภายหลัง
+
+    โครงสร้างของ Memento Pattern
+        1. Originator – Object ที่มี state ที่เราต้องการเก็บ
+        2. Memento – ตัวแทนของ state ที่ถูกเก็บไว้
+        3. Caretaker – ผู้จัดการ Memento หลายๆ อัน (เช่น Stack สำหรับ undo/redo)
+
+
+    ประโยชน์
+        1. รองรับการ Undo/Redo
+        2. แยกการจัดเก็บ state ออกจาก logic ของ object
+        3. ไม่ละเมิด Encapsulation 
+
+    ข้อควรระวัง
+        1. อาจใช้ memory มาก ถ้า state ใหญ่หรือซับซ้อน
+        2. ต้องจัดการการจัดเก็บ/เรียกคืน state อย่างมีประสิทธิภาพ
+    
