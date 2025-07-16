@@ -23,7 +23,7 @@ func (c *HttpConn) Read(p []byte) (n int, err error) {
 	return c.in.Read(p)
 }
 
-func (c *HttpConn) Writer(d []byte) (n int, err error) {
+func (c *HttpConn) Write(d []byte) (n int, err error) {
 	return c.out.Write(d)
 }
 
