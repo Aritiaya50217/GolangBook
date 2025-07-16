@@ -1,0 +1,21 @@
+Outside-In Development 
+        คือแนวทางในการพัฒนา ซอฟต์แวร์แบบขับเคลื่อนจากมุมมองผู้ใช้งาน (user-focused) โดยเริ่มจาก “ภายนอกเข้าใน” 
+    จาก ความต้องการของผู้ใช้, interface, หรือ business goal ก่อน แล้วค่อยพัฒนา logic ภายในให้รองรับเป้าหมายนั้น
+
+    แนวคิดหลัก
+        1. เริ่มจากมุมมองของ ผู้ใช้ (User / Customer)
+        2. พัฒนา ระบบที่ตอบโจทย์ความต้องการจริง ไม่ใช่แค่ฟีเจอร์ที่ “ดูดี”
+        3. เขียนโค้ดทีละชั้น จาก outside (UI / API) → inside (logic / database)
+
+    กระบวนการพัฒนาแบบ Outside-In
+        1. เริ่มจาก Acceptance Criteria
+            - ถามว่า “ผู้ใช้ต้องการอะไร?”
+            - เขียน acceptance test (เช่น ด้วย Cucumber / Gherkin หรือ E2E tests)
+       
+        2. พัฒนา Interface หรือ API    
+            - เช่น เขียน UI หรือ HTTP endpoint ให้ตอบสนองความต้องการนั้น
+       
+        3. สร้าง Layer ภายใน
+            - เช่น business logic, service, persistence layer เพื่อรองรับการทำงานของ interface
+       
+        4. พัฒนาแบบ Test-Driven Development (TDD) ได้ในแต่ละชั้น
