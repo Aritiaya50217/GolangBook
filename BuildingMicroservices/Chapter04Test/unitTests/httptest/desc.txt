@@ -1,0 +1,19 @@
+httptest.NewRequest 
+    คือฟังก์ชันที่ใช้ในการสร้าง HTTP request จำลอง (mock request) สำหรับใช้ในการ ทดสอบ (testing) handler หรือ server ที่เขียนด้วย net/http package
+
+    syntax : 
+        func NewRequest(method, target string, body io.Reader) *http.Request
+
+    Parameters:
+
+        - method: HTTP method เช่น "GET", "POST", "PUT" เป็นต้น
+       
+        - target: URL path หรือ full URL เช่น "/users" หรือ "http://example.com/api"
+       
+        - body: เป็น io.Reader ที่ใช้ส่งข้อมูล เช่น strings.NewReader("some data") หรือ nil ถ้าไม่ต้องส่ง body
+
+
+    จุดประสงค์
+        1. ทดสอบฟังก์ชัน handler โดยไม่ต้องรัน server จริง
+        2. ใช้ใน unit test เพื่อจำลอง request แบบต่าง ๆ
+        3. ลดความยุ่งยากในการ mock ข้อมูล HTTP  
