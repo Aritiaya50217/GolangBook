@@ -1,0 +1,9 @@
+httptest.NewRequest 
+    ใช้สำหรับสร้าง mock HTTP response writer เพื่อใช้ทดสอบ HTTP handlers
+
+    syntax : 
+        func NewRecorder() *httptest.ResponseRecorder
+
+    ใช้ทำอะไร
+        มันจะจำลอง http.ResponseWriter เพื่อให้ handler ของคุณสามารถเขียน response (header, status code, body) ลงใน object นี้ได้ แล้วคุณสามารถตรวจสอบผลลัพธ์ได้ใน test
+          
