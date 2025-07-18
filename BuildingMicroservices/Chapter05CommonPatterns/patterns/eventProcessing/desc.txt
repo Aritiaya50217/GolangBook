@@ -1,0 +1,20 @@
+Event Processing
+
+        คือการออกแบบระบบที่รับและจัดการกับ “เหตุการณ์” (events) อย่างมีประสิทธิภาพ โดยใช้ประโยชน์จากความสามารถเด่นของ Go อย่าง goroutines และ channels
+    ที่ช่วยให้ทำงานแบบ concurrent และ asynchronous ได้ง่าย
+
+    โครงสร้างหลักของ Golang Event Processing
+
+        1. Event Producers (ผู้สร้างเหตุการณ์)
+            - สร้าง event เช่น รับ request, อ่านจาก message queue หรือ sensor
+            - ส่ง event เหล่านี้ไปยังช่องทางกลาง (channel หรือ queue)
+
+        2. Event Channel / Queue
+            - เป็น buffer หรือ pipeline สำหรับส่ง event จาก producer ไปยัง consumer
+            - ช่วยจัดการการสื่อสารแบบปลอดภัยและไม่บล็อก  
+
+        3. Event Consumers / Workers (ผู้ประมวลผลเหตุการณ์)
+            - goroutine ที่คอยรับ event จาก channel แล้วทำการประมวลผล เช่น บันทึกข้อมูล, ส่งอีเมล, เรียก API ภายนอก  
+
+        4. Dispatcher (ถ้าจำเป็น)
+            - กรณีมีหลายชนิดของ event หรือหลาย consumer อาจใช้ dispatcher แยกประเภท event และส่งต่อให้ consumer ที่เหมาะสม      
