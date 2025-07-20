@@ -1,0 +1,3 @@
+Circular linked list
+
+    คือโครงสร้างข้อมูลแบบ linked list ที่ โหนดสุดท้ายจะชี้กลับไปยังโหนดแรก แทนที่จะชี้ไปที่ nil เหมือนใน singly หรือ doubly linked list ทั่วไป
