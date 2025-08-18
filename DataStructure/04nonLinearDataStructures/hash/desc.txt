@@ -1,0 +1,2 @@
+The hash functions
+    ฟังก์ชันที่รับข้อมูล (input, message) แล้วคืนค่าเป็น “ค่าคงที่ขนาดหนึ่ง” (fixed-size output, hash digest)
