@@ -1,0 +1,11 @@
+Error Handling
+    ประเภท
+        1. Simple Error Handling  ใช้ if err != nil  ตรวจสอบ error โดยตรง
+        2. Custom Error Messages  ใช้ fmt.Errorf() เพื่อเพิ่ม context หรือ wrap error
+        3. Sentinel Errors สร้าง error คงที่ที่สามารถเปรียบเทียบได้โดยตรง
+        4. Custom Error Type สร้างโครงสร้าง error เอง เพื่อแนบข้อมูลเพิ่มเติม
+        5. errors.Is() และ errors.As()  สำหรับเช็คและแยกประเภท error ที่ถูก wrap ด้วย %w
+        6. Panic & Recover (สำหรับ error ร้ายแรง) ใช้ panic() กับ recover() เพื่อดักจับ error ที่ไม่ควรเกิดขึ้น
+        7. Error Aggregation (รวมหลาย error)    รวม error หลายอัน เช่นในการ validate หลายฟิลด์
+        8. Logging & Handling Together ผสมการ log และ return error อย่างเหมาะสม
+        
