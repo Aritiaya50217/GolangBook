@@ -1,0 +1,8 @@
+Polymorphism
+    ความสามารถของ object/function/struct ในการ ทำงานได้หลายแบบ ผ่าน interface หรือ method เดียวกัน
+
+    ประเภทของ Polymorphism
+        1. Compile-time Polymorphism (Static)
+        2. Run-time Polymorphism (Dynamic)
+            - เกิดจากการที่ struct หลายตัว implement interface เดียวกัน
+            - เวลาเรียกใช้งานผ่าน interface จะทำงานตาม struct จริงที่ผูกอยู่
