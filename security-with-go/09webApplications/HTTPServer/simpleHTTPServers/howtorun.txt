@@ -1,0 +1,6 @@
+how to run 
+
+1. build
+    go build -o serveDir main.go
+2. run 
+    ./serveDir localhost:8080 .
