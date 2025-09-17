@@ -1,0 +1,5 @@
+สร้าง self-signed certificate เพื่อทดสอบ
+
+- openssl req -x509 -newkey rsa:2048 -nodes -keyout server.key -out server.crt -days 365
+
+แล้วกด  enter ไปเรื่อย ๆ
