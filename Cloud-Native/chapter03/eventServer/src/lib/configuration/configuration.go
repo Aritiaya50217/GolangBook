@@ -1,7 +1,7 @@
 package configuration
 
 import (
-	"Cloud-Native/chapter03/event/src/lib/persistence/dblayer"
+	"Cloud-Native/chapter03/eventServer/src/lib/persistence/dblayer"
 	"encoding/json"
 	"fmt"
 	"os"

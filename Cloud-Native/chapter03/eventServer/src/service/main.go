@@ -1,9 +1,9 @@
 package main
 
 import (
-	"Cloud-Native/chapter03/event/src/lib/configuration"
-	"Cloud-Native/chapter03/event/src/lib/persistence/dblayer"
-	"Cloud-Native/chapter03/event/src/service/rest"
+	"Cloud-Native/chapter03/eventServer/src/lib/configuration"
+	"Cloud-Native/chapter03/eventServer/src/lib/persistence/dblayer"
+	"Cloud-Native/chapter03/eventServer/src/service/rest"
 	"flag"
 	"log"
 )
