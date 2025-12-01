@@ -13,8 +13,8 @@ type Barrier struct {
 }
 
 func NewBarrier(size int) *Barrier {
-	condVar := sync.NewCond(&sync.Mutex{})  // creates new condition variable.
-	return &Barrier{size: 0, cond: condVar} // creates and returns reference to new barrier.
+	condVar := sync.NewCond(&sync.Mutex{})     // creates new condition variable.
+	return &Barrier{size: size, cond: condVar} // creates and returns reference to new barrier.
 }
 
 func (b *Barrier) Wait() {
