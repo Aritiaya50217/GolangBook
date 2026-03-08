@@ -231,6 +231,7 @@ func main() {
 	longestResults := longestsWords(quit, wordsMulti[0])
 	frequentResults := frequentWords(quit, wordsMulti[1])
 
-	fmt.Println("Longest Words:", <-longestResults)
-	fmt.Println("Most frequent Words:", <-frequentResults)
+	fmt.Println("Longest Words:", <-longestResults)        // Read he result from the longestWords() goroutine and prints is.
+	fmt.Println("Most frequent Words:", <-frequentResults) // read the result from the mostFrequentWords() goroutine and prints it.
+
 }
