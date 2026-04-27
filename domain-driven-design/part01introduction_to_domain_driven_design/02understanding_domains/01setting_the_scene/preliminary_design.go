@@ -1,4 +1,4 @@
-package main
+package settingthescene
 
 import (
 	"context"
@@ -50,5 +50,3 @@ type UserManager interface {
 	AddUser(ctx context.Context, request UserAddRequest) (User, error)
 	ModifyUser(ctx context.Context, request UserModifyRequest) (User, error)
 }
-
-37
