@@ -1,4 +1,4 @@
-package main
+package factory
 
 import (
 	"errors"
@@ -8,10 +8,10 @@ import (
 )
 
 type Booking struct {
-	id            uuid.UUID
-	from          time.Time
-	to            time.Time
-	hairDresserID uuid.UUID
+	ID            uuid.UUID
+	From          time.Time
+	To            time.Time
+	HairDresserID uuid.UUID
 }
 
 func CreateBooking(from, to time.Time, hairDresserID uuid.UUID) (*Booking, error) {
@@ -20,10 +20,10 @@ func CreateBooking(from, to time.Time, hairDresserID uuid.UUID) (*Booking, error
 		return nil, errors.New("no appointments after closing time")
 	}
 	return &Booking{
-		hairDresserID: uuid.New(),
-		id:            uuid.New(),
-		from:          from,
-		to:            to,
+		HairDresserID: uuid.New(),
+		ID:            uuid.New(),
+		From:          from,
+		To:            to,
 	}, nil
 
 }
