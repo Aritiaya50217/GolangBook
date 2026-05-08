@@ -9,6 +9,7 @@ import (
 
 type Booking struct {
 	ID            uuid.UUID
+	UserID        uuid.UUID
 	From          time.Time
 	To            time.Time
 	HairDresserID uuid.UUID
