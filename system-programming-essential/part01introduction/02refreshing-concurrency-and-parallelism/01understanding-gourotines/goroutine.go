@@ -13,6 +13,6 @@ func say(s string) {
 }
 
 func main() {
-	say("hello")
-	go say("world")
+	go say("hello")
+	say("world")
 }
