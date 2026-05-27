@@ -18,7 +18,7 @@ func main() {
 	}()
 
 	wg.Add(1)
-	
+
 	go func() {
 		defer wg.Done()
 		fmt.Println("Goroutine 2 is about to send a signal.")
