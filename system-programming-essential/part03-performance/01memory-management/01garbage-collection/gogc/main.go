@@ -12,5 +12,5 @@ func main() {
 	fmt.Println("done")
 
 	// GOGC=20 GODEBUG=gctrace=1 go run main.go  --> GC บ่อย ,RAM น้อย, CPU มาก
-	// GOGC=10000 GODEBUG=gctrace=1 go run main.go -->  GC น้อย, RAM มาก, CPU น้อย
+	// GOGC=100 GODEBUG=gctrace=1 go run main.go -->  GC น้อย, RAM มาก, CPU น้อย
 }
