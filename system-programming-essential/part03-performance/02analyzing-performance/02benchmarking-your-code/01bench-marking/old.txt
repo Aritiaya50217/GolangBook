@@ -1,0 +1,11 @@
+goos: darwin
+goarch: arm64
+pkg: system-programming-essential/part03-performance/02analyzing-performance/02benchmarking-your-code/01bench-marking
+cpu: Apple M1
+BenchmarkSum-8      	1000000000	         0.5495 ns/op
+BenchmarkSumSub/small-8         	1000000000	         0.5165 ns/op
+BenchmarkSumSub/medium-8        	1000000000	         0.5180 ns/op
+BenchmarkSumSub/large-8         	1000000000	         0.5650 ns/op
+BenchmarkFib-8                  	 4023358	       307.2 ns/op
+PASS
+ok  	system-programming-essential/part03-performance/02analyzing-performance/02benchmarking-your-code/01bench-marking	4.757s
