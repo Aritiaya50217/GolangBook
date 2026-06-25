@@ -1,9 +1,9 @@
 package main
 
 import (
-	"Cloud-Native/chapter03/eventServer/src/lib/configuration"
-	"Cloud-Native/chapter03/eventServer/src/lib/persistence/dblayer"
-	"Cloud-Native/chapter03/eventServer/src/service/rest"
+	"cloud-Native-programming-with-golang/chapter03/eventServer/src/lib/configuration"
+	"cloud-Native-programming-with-golang/chapter03/eventServer/src/lib/persistence/dblayer"
+	"cloud-Native-programming-with-golang/chapter03/eventServer/src/service/rest"
 	"flag"
 	"log"
 )

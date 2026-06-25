@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"Cloud-Native/chapter02/event/src/lib/persistence"
+	"cloud-Native-programming-with-golang/chapter02/event/src/lib/persistence"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
