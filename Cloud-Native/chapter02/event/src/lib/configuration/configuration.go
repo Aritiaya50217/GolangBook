@@ -1,7 +1,7 @@
 package configuration
 
 import (
-	dblayer "Cloud-Native/chapter02/event/src/lib/persistence/dbLayer"
+	dblayer "cloud-Native-programming-with-golang/chapter02/event/src/lib/persistence/dbLayer"
 	"encoding/json"
 	"fmt"
 	"os"

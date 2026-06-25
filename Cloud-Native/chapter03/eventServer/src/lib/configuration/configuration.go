@@ -1,7 +1,7 @@
 package configuration
 
 import (
-	"Cloud-Native/chapter03/eventServer/src/lib/persistence/dblayer"
+	"cloud-Native-programming-with-golang/chapter03/eventServer/src/lib/persistence/dblayer"
 	"encoding/json"
 	"fmt"
 	"os"

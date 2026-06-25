@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"Cloud-Native/chapter02/event/src/lib/persistence"
+	"cloud-Native-programming-with-golang/chapter02/event/src/lib/persistence"
 	"net/http"
 
 	"github.com/gorilla/mux"
