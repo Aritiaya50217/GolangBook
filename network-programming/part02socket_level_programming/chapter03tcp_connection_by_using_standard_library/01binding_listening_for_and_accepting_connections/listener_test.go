@@ -14,9 +14,5 @@ func TestListener(t *testing.T) {
 		_ = listener.Close()
 	}()
 
-	t.Log("bound to %q", listener.Addr())
-}
-
-func main() {
-	// 75
+	t.Logf("bound to %q", listener.Addr())
 }
