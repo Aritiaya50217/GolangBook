@@ -22,12 +22,14 @@ func TestEchoServerUnix(t *testing.T) {
 		}
 	}()
 
-	ctx, _ := context.WithCancel(context.Background())
+	ctx, cancel := context.WithCancel(context.Background())
 	socket := filepath.Join(dir, fmt.Sprintf("%d.sock", os.Getpid()))
 	rAddr, err := streamingEchoServer(ctx, "unix", socket)
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	defer cancel()
 
 	err = os.Chmod(socket, os.ModeSocket|0666)
 	if err != nil {
