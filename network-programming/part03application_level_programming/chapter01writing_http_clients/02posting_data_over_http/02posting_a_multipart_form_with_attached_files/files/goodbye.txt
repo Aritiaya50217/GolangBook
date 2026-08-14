@@ -1,0 +1,23 @@
+{
+"args": {},
+"data": "",
+"files": {
+ "file1": "Hello, world!\n",
+ "file2": "Goodbye, world!\n"
+ },
+"form": {
+ "date": "2006-01-02T15:04:05-07:00",
+ "description": "Form fields with attached files"
+ },
+ "headers": {
+ "Accept-Encoding": "gzip",
+ "Content-Length": "739",
+ "Content-Type": "multipart/form-data; boundary=e9ad4b62e0dfc8d7dc57ccfa8ba
+62244342f1884608e6d88018f9de8abcb",
+ "Host": "httpbin.org",
+ "User-Agent": "Go-http-client/1.1"
+ },
+ "json": null,
+ "origin": "192.168.0.1",
+ "url": "https://httpbin.org/post"
+}
