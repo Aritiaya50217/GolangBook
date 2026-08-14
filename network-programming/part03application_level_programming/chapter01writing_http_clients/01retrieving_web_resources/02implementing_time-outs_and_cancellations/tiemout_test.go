@@ -30,6 +30,8 @@ func TestBlockIndefinitelyWithTimeout(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	req.Close = true
+
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		if !errors.Is(err, context.DeadlineExceeded) {
@@ -38,4 +40,5 @@ func TestBlockIndefinitelyWithTimeout(t *testing.T) {
 		return
 	}
 	_ = resp.Body.Close()
+
 }
