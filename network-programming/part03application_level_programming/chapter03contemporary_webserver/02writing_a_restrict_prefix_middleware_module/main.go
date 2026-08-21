@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/caddyserver/caddy/caddyhttp"
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/modules/caddyhttp"
 	"go.uber.org/zap"
