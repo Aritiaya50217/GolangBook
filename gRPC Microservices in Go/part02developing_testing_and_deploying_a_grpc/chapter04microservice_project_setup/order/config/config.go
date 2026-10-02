@@ -7,7 +7,7 @@ import (
 )
 
 func GetEnv() string {
-	return getEnvironmentValue("ENV")
+	return getEnvironmentValue("ENV") // Possible values for development/production
 }
 
 func GetDataSourceURL() string {
