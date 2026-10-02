@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "gRPC-microservices/part01grpc_and_microservices_architecture/chapter02grpc_meets_microservices/01service_discovery";
+
+message CreatePaymentRequest {
+  float price = 1;
+}
+
+message CreatePaymentResponse {
+    int64 bill_id = 1 ;
+}
+
+service Payment {
+    rpc Create(CreatePaymentRequest) returns (CreatePaymentResponse){};
+} 
