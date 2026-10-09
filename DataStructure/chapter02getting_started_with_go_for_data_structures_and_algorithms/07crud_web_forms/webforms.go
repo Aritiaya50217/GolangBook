@@ -1,7 +1,7 @@
 package main
 
 import (
-	"data-structure/02gettingStarted/CRUDWebForms/web"
+	"data-structure/chapter02getting_started_with_go_for_data_structures_and_algorithms/07crud_web_forms/web"
 	"html/template"
 	"log"
 	"net/http"
