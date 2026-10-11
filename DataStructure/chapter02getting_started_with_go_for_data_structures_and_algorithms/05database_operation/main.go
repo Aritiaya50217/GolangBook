@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Customer class
@@ -40,7 +42,11 @@ func InsertCustomer(customer Customer) {
 // GetCustomers method returns Customer Array
 func GetCustomers() []Customer {
 	database := GetConnection()
-	rows, err := database.Query("SELECT * FROM Customer ORDER BY Customerid DESC")
+
+	var err error
+	var rows *sql.Rows
+	var args any
+	rows, err = database.Query("SELECT * FROM Customer ORDER BY Customerid DESC", args)
 	if err != nil {
 		panic(err.Error())
 	}

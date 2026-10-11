@@ -10,4 +10,8 @@ func main() {
 		twoSlices[i] = make([]int, cols)
 	}
 	fmt.Println(twoSlices)
+
+	test := make([]int, 0)
+	test = append(test, 1, 2)
+	fmt.Println(len(test), cap(test))
 }
