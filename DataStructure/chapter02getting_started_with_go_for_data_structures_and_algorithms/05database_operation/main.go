@@ -45,8 +45,7 @@ func GetCustomers() []Customer {
 
 	var err error
 	var rows *sql.Rows
-	var args any
-	rows, err = database.Query("SELECT * FROM Customer ORDER BY Customerid DESC", args)
+	rows, err = database.Query("SELECT * FROM Customer ORDER BY Customerid DESC")
 	if err != nil {
 		panic(err.Error())
 	}
