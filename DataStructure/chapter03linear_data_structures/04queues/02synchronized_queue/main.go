@@ -108,6 +108,7 @@ func main() {
 	queue := Queue{}
 	queue.New()
 	fmt.Println("queue : ", queue)
+
 	for i := 0; i < 10; i++ {
 		go passenger(&queue)
 	}
@@ -115,6 +116,5 @@ func main() {
 	for j := 0; j < 5; j++ {
 		go ticketIssue(&queue)
 	}
-
 	select {}
 }

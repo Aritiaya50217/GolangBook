@@ -9,6 +9,7 @@ func main() {
 	integers := []int{1, 3, 5, 7}
 	circularList := ring.New(len(integers))
 
+	fmt.Println("===== Next =====")
 	for i := 0; i < circularList.Len(); i++ {
 		circularList.Value = integers[i]
 		circularList = circularList.Next()
@@ -17,14 +18,15 @@ func main() {
 	circularList.Do(func(element interface{}) {
 		fmt.Print(element, ",")
 	})
-	fmt.Println()
+
+	fmt.Println("\n===== Prev =====")
 
 	for i := 0; i < circularList.Len(); i++ {
 		fmt.Print(circularList.Value, ",")
 		circularList = circularList.Prev()
 	}
 
-	fmt.Println()
+	fmt.Println("\n===== Move =====")
 
 	circularList = circularList.Move(2)
 	circularList.Do(func(element interface{}) {
