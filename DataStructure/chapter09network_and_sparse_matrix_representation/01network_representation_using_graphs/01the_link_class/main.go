@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type SocialGraph struct {
 	Size  int
@@ -33,7 +35,7 @@ func (socialGraph *SocialGraph) PrintLinks() {
 	vertex := 0
 
 	fmt.Printf("Printing all links from %d\n", vertex)
-	
+
 	for _, link := range socialGraph.Links[vertex] {
 		fmt.Printf("Link: %d -> %d (%d)\n", link.Vertex1, link.Vertex2, link.LinkWeight)
 	}
