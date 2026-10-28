@@ -1,4 +1,4 @@
-package referencecounting
+package main
 
 import (
 	"fmt"
