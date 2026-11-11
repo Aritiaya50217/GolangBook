@@ -9,6 +9,7 @@ require (
 	github.com/gorilla/mux v1.8.1
 	github.com/onsi/ginkgo/v2 v2.34.0
 	github.com/onsi/gomega v1.44.0
+	github.com/pact-foundation/pact-go v1.10.0
 	github.com/stretchr/testify v1.12.1
 	gorm.io/driver/postgres v1.6.3
 	gorm.io/gorm v1.31.2
@@ -24,7 +25,9 @@ require (
 	github.com/google/pprof v0.0.0-20260402051712-545e8a4df936 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
 	github.com/hashicorp/go-memdb v1.3.5 // indirect
+	github.com/hashicorp/go-version v1.5.0 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
+	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx/v5 v5.10.0 // indirect
