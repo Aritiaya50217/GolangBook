@@ -2,7 +2,7 @@ package repositorypattern
 
 import (
 	"context"
-	factory "domain-driven-design/part01introduction_to_domain_driven_design/04exploring_factories_and_repositories_and_services/01technical_requirements/01factory_pattern"
+	factory "domain-driven-design/part01introduction_to_domain_driven_design/chapter04exploring_factories_and_repositories_and_services/01technical_requirements/01factory_pattern"
 	"fmt"
 
 	"github.com/jackc/pgx/v5"

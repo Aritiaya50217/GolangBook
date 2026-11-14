@@ -1,7 +1,7 @@
 package valueobject_test
 
 import (
-	valueobject "domain-driven-design/part01introduction_to_domain_driven_design/03entities_value_objects_and_aggregates/02value_object"
+	valueobject "domain-driven-design/part01introduction_to_domain_driven_design/chapter03entities_value_objects_and_aggregates/02value_object"
 	"testing"
 )
 
