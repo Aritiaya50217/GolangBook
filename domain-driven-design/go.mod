@@ -17,6 +17,7 @@ require (
 require (
 	github.com/cucumber/gherkin/go/v33 v33.0.0 // indirect
 	github.com/cucumber/messages/go/v28 v28.0.0 // indirect
+	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
