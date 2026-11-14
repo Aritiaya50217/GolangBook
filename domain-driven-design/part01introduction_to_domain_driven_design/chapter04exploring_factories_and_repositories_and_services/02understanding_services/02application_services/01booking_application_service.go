@@ -2,8 +2,8 @@ package applicationservices
 
 import (
 	"context"
-	factorypattern "domain-driven-design/part01introduction_to_domain_driven_design/04exploring_factories_and_repositories_and_services/01technical_requirements/01factory_pattern"
-	repositorypattern "domain-driven-design/part01introduction_to_domain_driven_design/04exploring_factories_and_repositories_and_services/01technical_requirements/02repository_pattern"
+	factorypattern "domain-driven-design/part01introduction_to_domain_driven_design/chapter04exploring_factories_and_repositories_and_services/01technical_requirements/01factory_pattern"
+	repositorypattern "domain-driven-design/part01introduction_to_domain_driven_design/chapter04exploring_factories_and_repositories_and_services/01technical_requirements/02repository_pattern"
 	"errors"
 	"fmt"
 )

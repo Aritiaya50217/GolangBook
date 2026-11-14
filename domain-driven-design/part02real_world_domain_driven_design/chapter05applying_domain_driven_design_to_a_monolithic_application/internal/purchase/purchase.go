@@ -2,12 +2,11 @@ package purchase
 
 import (
 	"context"
-	coffeeco "domain-driven-design/Part02real_world_domain_driven_design/05applying_domain_driven_design_to_a_monolithic_application/internal"
-	"domain-driven-design/Part02real_world_domain_driven_design/05applying_domain_driven_design_to_a_monolithic_application/internal/loyalty"
-	"domain-driven-design/Part02real_world_domain_driven_design/05applying_domain_driven_design_to_a_monolithic_application/internal/payment"
-	"domain-driven-design/Part02real_world_domain_driven_design/05applying_domain_driven_design_to_a_monolithic_application/internal/store"
+	coffeeco "domain-driven-design/part02real_world_domain_driven_design/chapter05applying_domain_driven_design_to_a_monolithic_application/internal"
+	"domain-driven-design/part02real_world_domain_driven_design/chapter05applying_domain_driven_design_to_a_monolithic_application/internal/loyalty"
+	"domain-driven-design/part02real_world_domain_driven_design/chapter05applying_domain_driven_design_to_a_monolithic_application/internal/payment"
+	"domain-driven-design/part02real_world_domain_driven_design/chapter05applying_domain_driven_design_to_a_monolithic_application/internal/store"
 
-	// store "domain-driven-design/Part02real_world_domain_driven_design/05applying_domain_driven_design_to_a_monolithic_application/store"
 
 	"errors"
 	"fmt"
